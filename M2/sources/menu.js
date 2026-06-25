@@ -5,6 +5,11 @@ function redirigiendo(btn) {
     document.getElementById("redirigiendoAlert").style.display = "block";
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  let saldo = localStorage.getItem("saldo") || 0; // si no existe usa 60000
+  document.getElementById("balance").textContent = "$" + saldo;
+});
+
 document.getElementById("Depositar").addEventListener("click",redirigiendo);
 document.getElementById("Depositar").addEventListener("click",()=>{setTimeout(()=>{window.location.href="./deposit.html";},1000)});
 document.getElementById("EnviarDinero").addEventListener("click",redirigiendo);
