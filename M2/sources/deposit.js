@@ -12,7 +12,7 @@ function guardarDeposito(monto){
     alias:"N/A",
     banco:"N/A"
   };
-  nuevoDeposito.monto= monto; 
+  nuevoDeposito.monto= "+"+monto; 
   transferencias.push(nuevoDeposito);
   localStorage.setItem("transferencias", JSON.stringify(transferencias));
 }

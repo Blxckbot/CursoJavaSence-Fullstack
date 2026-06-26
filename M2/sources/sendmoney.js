@@ -63,7 +63,7 @@ function transferencia(contacto,monto){
     console.log("Saldo:", saldo);
     console.log("Monto:", monto);
 
-  if (saldo>monto) {
+  if (saldo>=monto) {
     saldo -= monto;
     localStorage.setItem("saldo", saldo);
     
@@ -82,7 +82,7 @@ function transferencia(contacto,monto){
 function guardarTransferencia(contacto,monto){
   let transferencias = JSON.parse(localStorage.getItem("transferencias")) || [];
   let nuevaTransferencia = contacto;
-  nuevaTransferencia.monto= monto; 
+  nuevaTransferencia.monto= -monto; 
   transferencias.push(nuevaTransferencia);
   localStorage.setItem("transferencias", JSON.stringify(transferencias));
 }
