@@ -130,6 +130,8 @@ document.getElementById("formDepositar").addEventListener("submit",(e)=>{
 //volver a seleccionar contactos
 document.getElementById("volver").addEventListener("click",()=>{
 
+
+  document.getElementById("formDepositar").reset();
   document.getElementById("principalDeposit").style.display = "block";
   document.getElementById("transferenciaCard").style.display = "none";
 });
