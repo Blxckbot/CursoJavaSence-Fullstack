@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-  <div class="container card p-4">
+  <div id="principalDeposit" class="container card p-4" style="display: block;">
     <h2>Enviar Dinero</h2>
 
       <div class="form-group">
@@ -39,21 +39,9 @@
       </div>
 
 
-    <form>
+    <form id="contactSelect">
       <h3>Contactos</h3>
         <ul id="contactList" class="list-group">
-          <li class="list-group-item">
-            <div class="contact-info">
-              <span class="contact-name">John Doe</span>
-              <span class="contact-details">CBU: 123456789, Alias: john.doe, Banco: ABC Bank</span>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="contact-info">
-              <span class="contact-name">Jane Smith</span>
-              <span class="contact-details">CBU: 987654321, Alias: jane.smith, Banco: XYZ Bank</span>
-            </div>
-          </li>
         </ul>
 
         <button type="submit" class="btn btn-primary mt-2">Seleccionar contacto</button>
@@ -62,15 +50,16 @@
     <a href="menu.html" class="btn btn-secondary mt-2 ">Volver al Menú Principal</a>
   </div>
 
-  <div class="container card p-4" style="display: block;">
-    <form>
-      <div class="list-group">
-        <label class="form-check-label" for="monto">
+  <div id="transferenciaCard" class="container card p-4" style="display: none;">
+    <form id="formDepositar">
+      <div  class="list-group">
+        <label id="transferir" class="form-check-label" for="monto">
           <span class="contact-name">${contacto.nombre}</span><br>
           <small class="text-muted">CBU: ${contacto.cbu}, Alias: ${contacto.alias}, Banco: ${contacto.banco}</small>
         </label>
         <input type="text" class="form-control mt-2" id="monto"  placeholder="Ingrese el monto a transferir...">
         <button type="submit" id="depositar" class="btn btn-primary mt-2">Depositar monto</button>
+        <a id="volver" class="btn btn-secondary mt-2">Volver</a>
       </div>
       
     </form>
