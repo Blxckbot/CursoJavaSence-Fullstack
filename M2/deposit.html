@@ -3,6 +3,7 @@
 <head>
   <title>Wallet - Depositar</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./sources/styles.css">
   <style>
     body {
       padding: 20px;
@@ -15,16 +16,16 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container card p-4">
     <h2>Depositar</h2>
     <form>
       <div class="form-group">
         <label for="depositAmount">Monto a depositar:</label>
         <input type="number" class="form-control" id="depositAmount" placeholder="Ingresa el monto...">
       </div>
-      <button type="submit" id="deposit" class="btn btn-primary">Realizar depósito</button>
+      <button type="submit" id="deposit" class="btn btn-primary mb-2">Realizar depósito</button>
     </form>
-    <a href="menu.html" class="btn btn-secondary">Volver al Menú Principal</a>
+    <a href="menu.html" class="btn btn-secondary mb-2">Volver al Menú Principal</a>
   </div>
   <script src="./sources/deposit.js"></script>
 </body>

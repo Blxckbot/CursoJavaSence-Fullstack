@@ -3,6 +3,7 @@
 <head>
   <title>Wallet - Enviar Dinero</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./sources/styles.css">
   <style>
     body {
       padding: 20px;
@@ -15,31 +16,65 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container card p-4">
     <h2>Enviar Dinero</h2>
-    <form>
+
       <div class="form-group">
-        <label for="searchContact">Buscar en la agenda de transferencias:</label>
-        <input type="text" class="form-control" id="searchContact" placeholder="Search contact">
+        <h5>Selecciona el contacto a transferir o agrega un nuevo contacto:</h5>
       </div>
-      <button type="submit" class="btn btn-primary">Agregar nuevo contacto</button>
- <h3>Contactos</h3>
-  <ul id="contactList" class="list-group">
-    <li class="list-group-item">
-      <div class="contact-info">
-        <span class="contact-name">John Doe</span>
-        <span class="contact-details">CBU: 123456789, Alias: john.doe, Banco: ABC Bank</span>
+      <div class="form-group">
+        <a id="agregarContacto" class="form-control btn btn-primary mb-2">Agregar nuevo contacto</a>
+        <form id="contactForm" style="display:none;">
+          <label class="mt-2" for="inputNombre">Nombre:</label>
+          <input class="form-control" id="inputNombre" type="text" placeholder="Ingrese el nombre..." required>
+          <label class="mt-2" for="inputCbu">CBU:</label>
+          <input class="form-control" id="inputCbu" type="text" placeholder="Ingrese el CBU..." required>
+          <label class="mt-2" for="inputAlias">Alias:</label>
+          <input class="form-control" id="inputAlias" type="text" placeholder="Ingrese el alias..." required>
+          <label class="mt-2" for="inputBanco">Banco:</label>
+          <input class="form-control" id="inputBanco" type="text" placeholder="Ingrese el banco..." required>
+          <button type="submit" class="btn btn-primary mt-2">Agregar contacto</button>
+        </form>
+
       </div>
-    </li>
-    <li class="list-group-item">
-      <div class="contact-info">
-        <span class="contact-name">Jane Smith</span>
-        <span class="contact-details">CBU: 987654321, Alias: jane.smith, Banco: XYZ Bank</span>
-      </div>
-    </li>
-      <button type="submit" class="btn btn-primary">Enviar dinero</button>
+
+
+    <form>
+      <h3>Contactos</h3>
+        <ul id="contactList" class="list-group">
+          <li class="list-group-item">
+            <div class="contact-info">
+              <span class="contact-name">John Doe</span>
+              <span class="contact-details">CBU: 123456789, Alias: john.doe, Banco: ABC Bank</span>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="contact-info">
+              <span class="contact-name">Jane Smith</span>
+              <span class="contact-details">CBU: 987654321, Alias: jane.smith, Banco: XYZ Bank</span>
+            </div>
+          </li>
+        </ul>
+
+        <button type="submit" class="btn btn-primary mt-2">Seleccionar contacto</button>
+        
     </form>
-    <a href="menu.html" class="btn btn-secondary">Volver al Menú Principal</a>
+    <a href="menu.html" class="btn btn-secondary mt-2 ">Volver al Menú Principal</a>
   </div>
+
+  <div class="container card p-4" style="display: block;">
+    <form>
+      <div class="list-group">
+        <label class="form-check-label" for="monto">
+          <span class="contact-name">${contacto.nombre}</span><br>
+          <small class="text-muted">CBU: ${contacto.cbu}, Alias: ${contacto.alias}, Banco: ${contacto.banco}</small>
+        </label>
+        <input type="text" class="form-control mt-2" id="monto"  placeholder="Ingrese el monto a transferir...">
+        <button type="submit" id="depositar" class="btn btn-primary mt-2">Depositar monto</button>
+      </div>
+      
+    </form>
+  </div>
+  <script src="./sources/sendmoney.js"></script>
 </body>
 </html>
