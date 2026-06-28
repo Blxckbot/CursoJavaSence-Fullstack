@@ -8,6 +8,9 @@ document.getElementById("ingreso").addEventListener("submit",(e)=>{
     }else{
         document.getElementById("miAlerta").style.display = "block";
     }
-
 });
 
+//Al reingresar las credenciales desaparece la alerta
+$("#rut, #pass").on("input",()=>{
+    $("#miAlerta").fadeOut(300);
+});

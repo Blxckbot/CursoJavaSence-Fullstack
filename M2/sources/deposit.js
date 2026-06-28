@@ -10,22 +10,37 @@ function guardarDeposito(monto){
     nombre:"Depósito en efectivo",
     CBU:"N/A",
     alias:"N/A",
-    banco:"N/A"
+    banco:"N/A",
+    type:"dep"
   };
   nuevoDeposito.monto= "+"+monto; 
   transferencias.push(nuevoDeposito);
   localStorage.setItem("transferencias", JSON.stringify(transferencias));
 }
 
-document.getElementById("deposit").addEventListener("click",(e)=>{
+function actualizarSaldo() {
+let saldoActual = parseInt(localStorage.getItem("saldo")) || 0;
+$("#saldoActual").text(saldoActual);
+}
+
+document.getElementById("deposit").addEventListener("submit",(e)=>{
     e.preventDefault();
     let monto = parseInt(document.getElementById("depositAmount").value);
     if(monto>0){
       depositar(monto);
       guardarDeposito(monto);
-      window.location.href = "./menu.html";
+
+      $("#deposit").fadeOut(300);
+      $("#alertaDeposit").fadeIn(300);
+      actualizarSaldo();
+      setTimeout(()=>{window.location.href = "./menu.html";},2000);
+
+
+
+      
     }else{
       alert("Deposite una cantidad válida");
     }
     
 });
+actualizarSaldo();

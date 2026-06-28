@@ -18,15 +18,20 @@
 <body>
   <div class="container card p-4">
     <h2>Depositar</h2>
-    <form>
+    <h6>Saldo actual: $<span id="saldoActual"></span></h6>
+    <form id="deposit">
       <div class="form-group">
         <label for="depositAmount">Monto a depositar:</label>
-        <input type="number" class="form-control" id="depositAmount" placeholder="Ingresa el monto...">
+        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control" id="depositAmount" placeholder="Ingresa el monto...">
       </div>
-      <button type="submit" id="deposit" class="btn btn-primary mb-2">Realizar depósito</button>
+      <button type="submit" class="btn btn-primary mb-2">Realizar depósito</button>
     </form>
+    <div id="alertaDeposit" class="alert alert-success mt-3" style="display:none;">Transacción exitosa!<br>Regresando al menú principal...</div>
     <a href="menu.html" class="btn btn-secondary mb-2">Volver al Menú Principal</a>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.js"></script>
   <script src="./sources/deposit.js"></script>
 </body>
 </html>

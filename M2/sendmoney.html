@@ -13,6 +13,11 @@
       max-width: 400px;
       margin: 0 auto;
     }
+
+    #contactList {
+      max-height: 15vh; /* 35% del alto de la pantalla */
+      overflow-y: auto;
+    }
   </style>
 </head>
 <body>
@@ -27,13 +32,14 @@
         <form id="contactForm" style="display:none;">
           <label class="mt-2" for="inputNombre">Nombre:</label>
           <input class="form-control" id="inputNombre" type="text" placeholder="Ingrese el nombre..." required>
-          <label class="mt-2" for="inputCbu">CBU:</label>
-          <input class="form-control" id="inputCbu" type="text" placeholder="Ingrese el CBU..." required>
+          <label class="mt-2" for="inputCbu">CBU: <i class="text-muted">(Sólo números)</i></label>
+          <input class="form-control" id="inputCbu" type="text"   placeholder="Ingrese el CBU..."   pattern="[0-9]*"   inputmode="numeric" required>
           <label class="mt-2" for="inputAlias">Alias:</label>
           <input class="form-control" id="inputAlias" type="text" placeholder="Ingrese el alias..." required>
           <label class="mt-2" for="inputBanco">Banco:</label>
           <input class="form-control" id="inputBanco" type="text" placeholder="Ingrese el banco..." required>
           <button type="submit" class="btn btn-primary mt-2">Agregar contacto</button>
+          <button type="reset" class="btn btn-secondary mt-2">Cancelar</button>
         </form>
 
       </div>
@@ -41,6 +47,7 @@
 
     <form id="contactSelect">
       <h3>Contactos</h3>
+        <input type="text" id="buscarContacto" class="form-control mb-2" placeholder="Buscar por nombre...">
         <ul id="contactList" class="list-group">
         </ul>
 
@@ -64,6 +71,8 @@
       
     </form>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.js"></script>
   <script src="./sources/sendmoney.js"></script>
 </body>
 </html>

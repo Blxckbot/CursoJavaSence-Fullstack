@@ -10,19 +10,37 @@
     }
 
     .container {
-      max-width: 400px;
+      max-width: 600px;
       margin: 0 auto;
+    }
+
+    #transferList {
+      max-height: 50vh; /* 35% del alto de la pantalla */
+      overflow-y: auto;
     }
   </style>
 </head>
 <body>
   <div class="container card p-4">
     <h2>Últimos Movimientos</h2>
-    <ul class="list-group" id="transferList">
+    <h6>Filtrar:</h6>
+    <form id="filter" class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="todo" value="" name="filtro">
+        <label class="form-check-label mr-3" for="todo">Todo</label>
+        <input class="form-check-input" type="radio" id="dep" value="dep" name="filtro">
+        <label class="form-check-label mr-3" for="dep">Depósitos</label>
+        <input class="form-check-input" type="radio" id="tran" value="tran" name="filtro">
+        <label class="form-check-label mr-3" for="tran">Tranferencias</label>
+        <input class="form-check-input" type="radio" id="com" value="com" name="filtro">
+        <label class="form-check-label mr-3" for="com">Compras</label>
+    </form>
+    <ul class="list-group mt-3" id="transferList">
       <li class="list-group-item">Compra en línea - $50.00</li>
     </ul>
     <a href="menu.html" class="btn btn-secondary mt-2">Volver al Menú Principal</a>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.js"></script>
   <script src="./sources/transactions.js"></script>
 </body>
 </html>

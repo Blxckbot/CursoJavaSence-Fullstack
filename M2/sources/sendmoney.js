@@ -39,10 +39,16 @@ function mostrarContactos() {
       </li>
     `;
   });
+  $("#contactSelect").show();
 }
 
 function seleccionContacto() {
-  let seleccionadoIndex = document.getElementById("contactSelect").querySelector("input:checked").value;
+  let seleccionado = document.getElementById("contactSelect").querySelector("input:checked");
+
+  if (!seleccionado) return; // no hace nada si no hay seleccionado
+
+  document.getElementById("principalDeposit").style.display = "none";
+  let seleccionadoIndex = seleccionado.value;
   let transferir = document.getElementById("transferir");
 
   let listaContactos = JSON.parse(localStorage.getItem("listaContactos")) || [];
@@ -83,6 +89,7 @@ function guardarTransferencia(contacto,monto){
   let transferencias = JSON.parse(localStorage.getItem("transferencias")) || [];
   let nuevaTransferencia = contacto;
   nuevaTransferencia.monto= -monto; 
+  nuevaTransferencia.type= "tran"; 
   transferencias.push(nuevaTransferencia);
   localStorage.setItem("transferencias", JSON.stringify(transferencias));
 }
@@ -94,6 +101,7 @@ var contactoTransfer;
 //Hace aparecer el formulario
 document.getElementById("agregarContacto").addEventListener("click",(e)=>{
     e.target.style.display = "none";
+    $("#contactSelect").hide();
     document.getElementById("contactForm").style.display = "block";
 });
 
@@ -111,11 +119,16 @@ document.getElementById("contactForm").addEventListener("submit",(e)=>{
     mostrarContactos();
 });
 
+$("#contactForm").on("reset",(e)=>{
+  $("#contactForm").hide();
+  $("#agregarContacto").show();
+  mostrarContactos();
+});
+
 //selecciona el contacto
 
 document.getElementById("contactSelect").addEventListener("submit",(e)=>{
   e.preventDefault();
-  document.getElementById("principalDeposit").style.display = "none";
   contactoTransfer = seleccionContacto();
 });
 
@@ -142,3 +155,16 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarContactos();
 });
 
+$("#buscarContacto").on("input", function() {
+  let busqueda = $(this).val().toLowerCase();
+
+  $("#contactList li").each(function() {
+    let nombre = $(this).find(".contact-name").text().toLowerCase();
+    
+    if (nombre.includes(busqueda)) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+});
